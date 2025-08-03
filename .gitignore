@@ -1,0 +1,25 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+
+# Virtual Environment
+venv/
+env/
+myenv/
+
+# IDE/Editor Files
+.idea/
+.vscode/
+*.swp
+
+# Database and Media
+db.sqlite3
+/media/
+/static/
+
+# Environment Variables and Settings (CRITICAL)
+.env
+local_settings.py
+settings_local.py
