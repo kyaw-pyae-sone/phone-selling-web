@@ -1,16 +1,11 @@
 from django.shortcuts import render
-from django.views import View
+from .forms import UserRegistrationForm
 
-
-class Login(View):
-    def get(self, request):
-        return render(request, "user/login.html")
-
-class Register(View):
-    def get(self, request):
-        return render(request, "user/registration.html")
-
-class Profile(View):
-    def get(self, request):
-        return render(request, "user/profile.html")
-
+def register(request):
+    if request.method == "POST":    
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return render(request, "user/login.html", {"user": user})
+    form = UserRegistrationForm()
+    return render(request, "user/registration.html", {"form": form})
