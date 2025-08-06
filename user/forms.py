@@ -6,16 +6,31 @@ from django.contrib.auth.models import User
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(
         label="Password",
-        widget=forms.PasswordInput
+        widget=forms.PasswordInput(
+            attrs = {
+                "class" : "form-control py-3"
+            }
+        )
     )
     password2 = forms.CharField(
         label="Confirm Password",
-        widget=forms.PasswordInput
+        widget=forms.PasswordInput(
+            attrs = {
+                "class" : "form-control py-3"
+            }
+        )
     )
 
     class Meta:
         model = User
         fields = ("email",)
+        widgets = {
+            "email" : forms.EmailInput(
+                attrs = {
+                    "class" : "form-control py-3"
+                }
+            )
+        }
 
     def clean_password2(self):
         password = self.cleaned_data.get("password")
@@ -52,10 +67,19 @@ class UserRegistrationForm(forms.ModelForm):
 
 class LoginForm(forms.Form):
     email = forms.EmailField(
-        label="Email"
+        label="Email",
+        widget= forms.EmailInput(
+            attrs = {
+                "class" : "form-control py-3"
+            }
+        )
     )
 
     password = forms.CharField(
         label="Password",
-        widget = forms.PasswordInput
+        widget = forms.PasswordInput(
+            attrs = {
+                "class" : "form-control py-3"
+            }
+        )
     )
