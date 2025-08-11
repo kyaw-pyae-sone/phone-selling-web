@@ -40,11 +40,11 @@ class Phone(models.Model):
 
     banner = models.ImageField(default="fallback.png", blank=True)
     model_name = models.CharField(max_length=100, primary_key=True)
-    instock = models.IntegerField()
     brand = models.CharField(
         max_length=50,
         choices = brand_names
     )
+    instock = models.IntegerField()
     release_date = models.DateField()
     price = models.FloatField()
     os = models.CharField(max_length=100)

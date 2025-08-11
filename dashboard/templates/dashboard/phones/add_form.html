@@ -12,24 +12,26 @@
 </head>
 <body>
     
-    <div class="container">
-        <a class="text-dark btn text-decoration-none" href={% url "get_phone" %}><i class="fa-solid fa-arrow-left"></i> Back</a>
+    <div class="container shadow my-5 px-5 py-3" >
+        <a class="text-dark btn text-decoration-none mt-3 mb-5" href={% url "get_phone" %}><i class="fa-solid fa-arrow-left"></i> Back</a>
 
         <div class="container">
-            <h1>Add Phone and Specifications</h1>
+            <h1 class="h2 mb-5">Add Phone and Specifications</h1>
             
-            <div class="container d-flex justify-content-start align-items-center">
+            <div class="container d-flex justify-content-between position-relative">
                 <form action="" method="POST" >
                     {% csrf_token %}
                     {% for each in form %}
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for={{each.id_for_label}} class="form-label" >{{ each.label }}</label>
                             {{ each }}
                         </div>
                     {% endfor %}
-                    <button type="Submit" >Add Product</button>
+                    <button class="btn btn-warning w-100 fw-bold" type="Submit" >Add Product</button>
                 </form>
-                <img id="image_preview" src={% static "img/fallback.png" %} alt="">
+                <div class="position-absolute end-50">
+                    <img id="image_preview" src={% static "img/fallback.png" %} alt="">
+                </div>
             </div>
         </div>
     </div>
