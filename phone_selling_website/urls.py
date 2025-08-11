@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 # from user.views import Login, Register, Profile
 
@@ -25,6 +27,11 @@ urlpatterns = [
 
     # user
     path("user/", include("user.urls")),
+    # dashboard
+    path("dashboard/", include("dashboard.urls"))
 
     # path("signup/", views.register, name="register"),
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
