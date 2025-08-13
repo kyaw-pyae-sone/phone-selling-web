@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .forms import PhoneForm
 from .models import Phone
 
@@ -12,7 +13,7 @@ def get_phone(request):
 # insert phone
 def insert_phone(request):
     if request.method == "POST":
-        form = PhoneForm(request.POST)
+        form = PhoneForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect("get_phone")
@@ -21,9 +22,19 @@ def insert_phone(request):
     return render(request, "dashboard/phones/add_form.html", {"form" : form})
 
 # update phone
-def update_phone(request):
-    pass
+def update_phone(request, model):
+    phone = Phone.objects.get(model_name = model)
+    print(phone.banner)
+    if request.method == "POST":
+        form = PhoneForm(request.POST, request.FILES, instance=phone)
+        if form.is_valid():
+            form.save()
+            return redirect("get_phone")
+    else:
+        form = PhoneForm(instance=phone)
+    return render(request, "dashboard/phones/update_form.html", {"form" : form})
 
 # delete phones
-def delete_phone(request):
-    pass
+def delete_phone(request, model):
+    Phone.objects.filter(model_name=model).delete()
+    return redirect("get_phone")

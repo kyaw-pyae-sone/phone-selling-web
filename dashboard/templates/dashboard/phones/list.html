@@ -38,8 +38,9 @@
                             <td>{{ phone.instock }}</td>
                             <td>{{ phone.color }}</td>
                             <td>{{ phone.price }} MMK</td>
-                            <td><a href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                            <td>
+                                <a href="update/{{ phone }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="delete/{{ phone }}"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                     {% endfor %}

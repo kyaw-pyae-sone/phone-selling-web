@@ -12,14 +12,14 @@
 </head>
 <body>
     
-    <div class="container shadow my-5 px-5 py-3 w-50" >
+    <div class="container shadow my-5 px-5 py-3" >
         <a class="text-dark btn text-decoration-none mt-3 mb-5" href={% url "get_phone" %}><i class="fa-solid fa-arrow-left"></i> Back</a>
 
         <div class="container">
             <h1 class="h2 mb-5">Add Phone and Specifications</h1>
             
-            <div class="container d-flex">
-                <form class="me-5" method="POST" enctype="multipart/form-data" >
+            <div class="container d-flex justify-content-between position-relative">
+                <form action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for each in form %}
                         <div class="form-group mb-3">
@@ -27,10 +27,14 @@
                             {{ each }}
                         </div>
                     {% endfor %}
-                    <button class="btn btn-warning w-100 fw-bold" type="Submit" >Add Product</button>
+                    <button class="btn btn-warning w-100 fw-bold" type="Submit" >Update Product</button>
                 </form>
-                <div class="border border-5 border-dark overflow-hidden" style="width:200px; height: 300px">
-                    <img id="image_preview" src={% static "img/fallback.png" %} class="w-100 h-100" style="object-fit:contain" alt="">
+                <div class="position-absolute end-50 border border-5 border-dark overflow-hidden" style="width:200px; height: 300px">
+                    {% if form.instance.banner %}
+                        <img id="image_preview" src="{{ form.instance.banner.url }}" alt="{{ form.instance.model_name }}" class="w-100 h-100" style="object-fit:contain">
+                    {% else %}
+                        <img id="image_preview" src={% static "img/fallback.png" %} class="w-100 h-100" style="object-fit:contain" alt="No image available">
+                    {% endif %}
                 </div>
             </div>
         </div>
