@@ -28,8 +28,9 @@ urlpatterns = [
     # user
     path("user/", include("user.urls")),
     # dashboard
-    path("dashboard/", include("dashboard.urls"))
-
+    path("dashboard/", include("dashboard.urls")),
+    # home or phones
+    path("", include("phones.urls"))
     # path("signup/", views.register, name="register"),
 ]
 
