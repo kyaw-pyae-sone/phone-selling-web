@@ -25,13 +25,14 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # home or phones
+    path("", include("phones.urls")),
     # user
     path("user/", include("user.urls")),
     # dashboard
     path("dashboard/", include("dashboard.urls")),
-    # home or phones
-    path("", include("phones.urls"))
-    # path("signup/", views.register, name="register"),
+    # cart
+    path("cart/", include("cart.urls")),
 ]
 
 
