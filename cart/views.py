@@ -1,5 +1,5 @@
 from statistics import quantiles
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from dashboard.models import Phone
@@ -27,10 +27,10 @@ def add_to_cart(request, model):
             return redirect("detail")
 
         if "cart" not in request.session:
-            request.session["cart"] = {}
+            request.session["cart"] = {} 
 
         cart = request.session["cart"]
-        cart[model] = cart.get(model, 0) + quantity_int
+        cart[model] = quantity_int
         request.session.modified = True
 
     return redirect("view_cart")

@@ -22,21 +22,21 @@
         </fieldset>
         <div class="col-md-5 order-list">
             <h4>My Order</h4>
-            {% for phone in context.phones %}
-                <div class="card">
+            {% for items in order_items %}
+                <div class="card mb-3">
                     <div class="row py-3">
                         <div class="col-md-3">
-                            <img src={{ phone.banner.url }} class="w-100" alt="">
+                            <img src={{ items.phone.banner.url }} class="w-100" alt="">
                         </div>
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-7">
-                                    <p class="card-title h5">{{ phone }}</p>
-                                    <p class="card-subtitle">{{ phone.price }} MMK</p>
-                                    <p class="card-text">x {{ context.quantity }}</p>
+                                    <p class="card-title h5">{{ items.phone }}</p>
+                                    <p class="card-subtitle">{{ items.phone.price }} MMK</p>
+                                    <p class="card-text">x {{ items.quantity }}</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <p class="card-text">{{ phone.price }} MMK</p>
+                                    <p class="card-text">{{ items.total }} MMK</p>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
 
             <div class="total">
                 <span>Total Price : </span>
-                <span>{{ context.phones.price }}</span>
+                <span>{{ grand_total }} MMK</span>
             </div>
         </div>
     </div>

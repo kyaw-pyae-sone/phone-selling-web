@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 # from user.views import Login, Register, Profile
 
@@ -33,6 +34,8 @@ urlpatterns = [
     path("dashboard/", include("dashboard.urls")),
     # cart
     path("cart/", include("cart.urls")),
+    # order
+    path("order/", include("orders.urls"))
 ]
 
 

@@ -22,7 +22,7 @@
         </tbody>
     </table>
     <h3>Total: ${{ grand_total }}</h3>
-    <a href="#">Proceed to Checkout</a>
+    <a href="{% url 'order_cart' %}">Proceed to Checkout</a>
 {% else %}
     <p>Your cart is empty.</p>
 {% endif %}

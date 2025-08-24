@@ -61,9 +61,9 @@
         buttons.forEach(function(each){
             each.addEventListener("click", (event) => {
                 if(  event.target.id == "buy-now" ){
-                    form.action = form.action.replace("cart/add_to_cart", "order")
+                    form.action = form.action.replace("cart/add_to_cart", "order/order_now")
                 }else if( event.target.id == "add-to-cart" ){
-                    form.action = form.action.replace("order", "cart/add_to_cart");
+                    form.action = form.action.replace("order/order_now", "cart/add_to_cart");
                 }
 
                 form.submit();

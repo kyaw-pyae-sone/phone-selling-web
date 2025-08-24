@@ -4,6 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm, LoginForm
 from django.contrib.auth.models import User
+from django.conf import settings
 
 ################ Registration View #################
 
@@ -34,7 +35,10 @@ def signin(request):
                 user = User.objects.get(email=email)
                 if user.check_password(password):
                     login(request, user)
-                    return redirect("profile")
+                    next_url = request.GET.get("next") or request.POST.get("next")
+                    if next_url:
+                        return redirect(next_url)
+                    return redirect(settings.LOGIN_REDIRECT_URL)
                 else:
                     form.add_error(None, "Invalid Email or Password")
             except User.DoesNotExist:
@@ -60,10 +64,10 @@ def signin(request):
 def signout(request):
     return redirect("signin")
 
-@login_required
-def profile(request):
-    messages.info(request, "You have been successfully logged out!!!")
-    return render(request, "user/profile.html", {"user": request.user})
+# @login_required
+# def profile(request):
+#     messages.info(request, "You have been successfully logged out!!!")
+#     return render(request, "user/profile.html", {"user": request.user})
 
 
 ################ Profile View #################
