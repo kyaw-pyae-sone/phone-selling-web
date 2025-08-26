@@ -53,6 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    #custom middleware
+    "phones.middleware.SaveLastPageMiddleware"
 ]
 
 ROOT_URLCONF = 'phone_selling_website.urls'

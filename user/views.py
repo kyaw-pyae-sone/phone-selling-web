@@ -35,10 +35,7 @@ def signin(request):
                 user = User.objects.get(email=email)
                 if user.check_password(password):
                     login(request, user)
-                    next_url = request.GET.get("next") or request.POST.get("next")
-                    if next_url:
-                        return redirect(next_url)
-                    return redirect(settings.LOGIN_REDIRECT_URL)
+                    return redirect("home")
                 else:
                     form.add_error(None, "Invalid Email or Password")
             except User.DoesNotExist:

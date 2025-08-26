@@ -5,7 +5,7 @@ from dashboard.models import Phone
 # Create your models here.
 
 class Order(models.Model):
-    transaction_id = models.IntegerField(primary_key=True)
+    phone = models.IntegerField(null=True)
     user_name = models.ForeignKey(User, on_delete=models.CASCADE)
     order_status = models.CharField(
         max_length=100,
@@ -27,8 +27,8 @@ class Order(models.Model):
             ("aya", "Aya Pay")          
         ]
     )
-    phone = models.IntegerField(null=True)
     order_date = models.DateTimeField(auto_now_add=True)
+    transaction_id = models.IntegerField(primary_key=True)
 
     def __str__(self):
         return str(self.transaction_id)

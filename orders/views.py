@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from dashboard.models import Phone
+from .forms import OrderForm
+from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def order_now(request, model):
 
     if request.method == "POST":
@@ -28,7 +31,9 @@ def order_now(request, model):
             "total": phone.price * quantity
         }]
 
-    return render(request, "orders/index.html", {"order_items" : order_items, "grand_total" : order_items[0]["total"]})
+        form = OrderForm()
+
+    return render(request, "orders/index.html", {"order_items" : order_items, "grand_total" : order_items[0]["total"], "form" : form})
 
 def order_cart(request):
 
