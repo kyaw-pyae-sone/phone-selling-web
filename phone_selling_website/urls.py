@@ -25,7 +25,6 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     # home or phones
     path("", include("phones.urls")),
     # user

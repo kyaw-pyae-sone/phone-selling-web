@@ -14,7 +14,8 @@
     <div class="container m-auto row shadow">
         <fieldset class="col-md-7 order-form">
             <legend>Contact Information</legend>
-            <form method = "POST">
+            <form action="{% url "purchase" %}" method = "POST">
+                {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit">Purchase Phone</button>
             </form>

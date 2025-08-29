@@ -8,6 +8,12 @@ def render_home(request):
 
     phones = Phone.objects.all()
 
+    if request.user.username:
+        print(request.user.username)
+        print(request.user.email)
+    else:
+        print("User not exists")
+
     return render(request, "phones/phone_list.html", {"phones" : phones})
 
 
