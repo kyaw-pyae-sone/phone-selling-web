@@ -1,0 +1,8 @@
+<div>
+    <p class="fw-bolder">Shops By Brands</p>
+    <ul class="list-group list-unstyled"> 
+        {% for brand in brands %}
+            <li class="mb-2">{{ brand|capfirst }}</li>
+        {% endfor %}
+    </ul>
+</div>

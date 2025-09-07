@@ -1,85 +1,10 @@
 {% extends "base.html" %}
 {% block "content" %}
-
-    <a href="#" class="btn btn-link text-dark text-decoration-none">Back to Home</a>
-
-    <div class="bg-primary">
-            <div class="card w-75 m-auto">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src={{ phone.banner.url }} class="img-fluid rounded-start" alt="">
-                    </div>
-                    <ul class="col-md-8">
-                        <div class="card-body">
-                            <form id="form" action="{% url 'add_to_cart' phone %}" method="POST">
-                                {% csrf_token %}
-                                <h3 class="card-title">{{ phone }}</h3>
-                                <h3 class="card-subtitle">{{ phone.price }} MMK</h3>
-                                <p class="text">Storage :  {{ phone.storage }}</p>
-                                <p class="text">RAM :  {{ phone.ram }}</p>
-                                <p class="text instock-text">In Stock :  <span id="instock">{{ phone.instock }}</span></p>
-                                <div class="input-group w-25 mb-3 qty_choice">
-                                    <label class="input-group-text bg-transparent border-0">Quantity</label>
-                                    <select name="quantity" id="" class="form-select rounded-0">
-                                        {% for quantity in quantity_range %}
-                                            <option value={{ quantity }} > {{ quantity }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <div class="btn-group gap-3">
-                                    <button type="button" id="buy-now" class="btn btn-warning">Buy Now</button>
-                                    <button type="button" id="add-to-cart" class="btn border-warning">Add to Cart</button>
-                                </div>
-                            </form>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        
+    
+    <div class="p-5">
+        <a href="{% url "home" %}" class="btn btn-link text-dark text-decoration-none"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        {% include "phones/components/information.html" %}
+        {% include "phones/components/specification.html" %}
     </div>
-
-    {% comment %} <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script> {% endcomment %}
-
-    <script type="text/javascript">
-
-        const form = document.getElementById("form")
-        const buttons = document.querySelectorAll(".btn")
-        const qty = +document.getElementById("instock").innerText
-        const instock_box = document.getElementsByClassName("instock-text")
-        const qty_choice = document.getElementsByClassName("qty_choice")
-
-        console.log(instock_box[0].innerText) // In Stock : 0
-
-        if(qty <= 0 ){
-            instock_box[0].innerText = "Out of Stock" // should change to Out of Stock
-            instock_box[0].classList.add("text-danger") // should change to Out of Stock
-            qty_choice[0].style.display = "none"
-            buttons[1].classList.add("disabled")
-            buttons[1].classList.replace("btn-warning", "btn-secondary")
-        }else{
-            buttons[1].classList.remove("disabled")
-            buttons[1].classList.replace("btn-secondary", "btn-warning")
-        }
-
-
-        {% comment %} console.log(form.action)
-        console.log(buttons)
-        {% endcomment %}
-
-        buttons.forEach(function(each){
-            each.addEventListener("click", (event) => {
-                if(  event.target.id == "buy-now" ){
-                    form.action = form.action.replace("cart/add_to_cart", "order/order_now")
-                }else if( event.target.id == "add-to-cart" ){
-                    form.action = form.action.replace("order/order_now", "cart/add_to_cart");
-                }
-
-                form.submit();
-            })
-        })
-
-    </script>
 
 {% endblock %}

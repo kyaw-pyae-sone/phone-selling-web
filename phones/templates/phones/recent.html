@@ -1,0 +1,18 @@
+<div class="w-50 m-auto mt-5 mb-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3 class="fw-bold">Recently Added Phones</h3>
+        <a href="" class="text-decoration-none text-black">view more<i class="fa-solid fa-angles-right"></i></a>
+    </div>
+    <div class="w-100 m-auto row mt-5">
+        {% for phone in phones %}
+            <a class="col-md-3 card text-decoration-none rounded-0 overflow-hidden home-card" href="detail/{{phone}}" >
+                <img src={{ phone.banner.url }} class="card-image-top m-5 mb-3 object-fit-conver" alt="">
+                <div class="card-body">
+                    <p class="card-title fw-bolder text-truncate">{{ phone }}</p>
+                    <p class="card-text fw-semibold text-truncate" >{{ phone.price }} MMKs</p>
+                    <p class="card-text fw-normal text-truncate" >Color : {{ phone.color }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>

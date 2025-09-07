@@ -1,16 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Home{% endblock %}
 {% block "content" %}
-    <h1>This is HOME</h1>
+    
+    {% include "phones/landing.html" %}
+    {% include "phones/recent.html" %}
+    {% include "phones/brands.html" %}
+    {% include "phones/latest.html" %}
 
-    <div class="d-flex">
-        {% for phone in phones %}
-            <a class="card me-3" href="detail/{{phone}}" style="width:200px" >
-                <img src={{ phone.banner.url }} alt="">
-                <li>{{ phone }}</li>
-                <li>{{ phone.price }}</li>
-                <li>{{ phone.color }}</li>
-            </a>
-        {% endfor %}
-    </div>
 {% endblock %}

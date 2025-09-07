@@ -1,0 +1,74 @@
+{% load static %}
+    <style>
+
+    </style>
+<div class="slick-body">
+    <div class="slick-container">
+        <h1 class="brand-title">Our Brands</h1>
+    
+        <!-- The Slick Slider Container -->
+        <div class="slick-slider">
+            <!-- Slide 1: Partner Logo A -->
+            <div class="slide-content">
+                <img src="{% static "img/phone1.jpg" %}" alt="Partner Brand A Logo">
+            </div>
+            <!-- Slide 2: Partner Logo B -->
+            <div class="slide-content">
+                <img src="{% static "img/phone2.jpg" %}" alt="Partner Brand B Logo">
+            </div>
+            <!-- Slide 3: Partner Logo C -->
+            <div class="slide-content">
+                <img src="{% static "img/phone3.jpg" %}" alt="Partner Brand C Logo">
+            </div>
+            <!-- Slide 4: Partner Logo D -->
+            <div class="slide-content">
+                <img src="{% static "img/phone4.jpg" %}" alt="Partner Brand D Logo">
+            </div>
+            <!-- Slide 5: Partner Logo E -->
+            <div class="slide-content">
+                <img src="{% static "img/phone5.jpg" %}" alt="Partner Brand E Logo">
+            </div>
+            <!-- Slide 6: Partner Logo F -->
+            <div class="slide-content">
+                <img src="{% static "img/phone3.jpg" %}" alt="Partner Brand F Logo">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (required for Slick) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Slick JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        // Initialize the slick slider with options
+        $('.slick-slider').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            cssEase: 'linear',
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    });
+</script>

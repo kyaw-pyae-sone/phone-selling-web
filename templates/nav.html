@@ -1,6 +1,6 @@
 {% load static %}
-<div class="row bg-warning">
-    <div class="container row px-3">
+<div class="row bg-warning w-auto">
+    <div class="container row px-3 w-100">
         <div class=" col-md-2 text-center h-100">
             <img src={% static "img/site-logo.png" %} class="site-logo" alt="logo">
         </div>
@@ -19,36 +19,39 @@
             <a href=""><i class="fa-regular fa-circle-user text-dark"></i></a>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-expand-lg bg-dark w-100">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse row px-5 py-3" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0 col-md-7 ms-5">
-                <li class="nav-item">
-                    <a class="nav-link active text-warning" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-warning" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Phones
-                    </a>
-                    <ul class="dropdown-menu bg-dark">
-                        <li><a class="dropdown-item text-warning" href="#">Action</a></li>
-                        <li><a class="dropdown-item text-warning" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-warning" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-warning" href="#">Link</a>
-                </li>
-            </ul>
-            <div class="container-fluid d-flex justify-content-end align-items-center col-md-4">
-                <a class="btn btn-link text-warning text-decoration-none" type="button">Contact Us</a>
-                <a class="btn btn-outline-warning ms-5 py-3" type="button">Compare Devices</a>
-              </div>
-          </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse row px-5 py-3" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 col-md-7 ms-5">
+                    <li class="nav-item">
+                        <a class="nav-link active text-warning" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-warning" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Phones
+                        </a>
+                        <ul class="dropdown-menu bg-dark p-0">
+                            <li class="rounded rounded-lg overflow-hidden " role="group" aria-label="First group"s>
+                                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                    {% for brand in brands %}
+                                        <button type="button" class="btn btn-outline-warning p-3">{{ brand|capfirst }}</button>
+                                    {% endfor %}
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning" href="#">About Us</a>
+                    </li>
+                </ul>
+                <div class="container-fluid d-flex justify-content-end align-items-center col-md-4">
+                    <a class="btn btn-link text-warning text-decoration-none" type="button">Contact Us</a>
+                    <a class="btn btn-outline-warning ms-5 py-3" type="button">Compare Devices</a>
+                </div>
+            </div>
         </div>
-      </nav>
+    </nav>
 </div>

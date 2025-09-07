@@ -6,7 +6,9 @@ from dashboard.models import Phone
 
 def render_home(request):
 
-    phones = Phone.objects.all()
+    phones = Phone.objects.all()[:8]
+    latest_phones = Phone.objects.filter().order_by("-release_date")[:8]
+    brands = Phone.objects.values_list("brand", flat=True).distinct()
 
     if request.user.username:
         print(request.user.username)
@@ -14,7 +16,7 @@ def render_home(request):
     else:
         print("User not exists")
 
-    return render(request, "phones/phone_list.html", {"phones" : phones})
+    return render(request, "phones/phone_list.html", {"phones" : phones, "latest_phones" : latest_phones, "brands" : brands})
 
 
 def render_detail(request, model):
