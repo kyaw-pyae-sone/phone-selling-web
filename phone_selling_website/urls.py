@@ -34,7 +34,9 @@ urlpatterns = [
     # cart
     path("cart/", include("cart.urls")),
     # order
-    path("order/", include("orders.urls"))
+    path("order/", include("orders.urls")),
+    # review
+    path("reviews/", include("review.urls")),
 ]
 
 

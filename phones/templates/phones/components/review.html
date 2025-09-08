@@ -1,0 +1,16 @@
+{% for review in reviews %}
+    <div class="review card px-5 py-3 mb-5 bg-light">
+        <div  class="card-title d-flex justify-content-between">
+            <div class="fw-bold d-flex align-items-center">
+                <i class="fa-solid fa-circle-user" style="font-size: 2em"></i>
+                {{ review.username }}
+            </div>
+            <div>
+                {{ review.created_at }}
+            </div>
+        </div>
+        <p class="card-body">
+            {{ review.comment }}
+        </p>
+    </div>
+{% endfor %}

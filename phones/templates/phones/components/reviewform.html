@@ -1,0 +1,25 @@
+<section class="review-form-section mt-5">
+
+    <h3>User Reviews</h3>
+
+    <div class="review-container mt-5 border border-2 p-5 overflow-hidden">
+
+        <form action="{% url "add_review" phone %}" method="POST" class="w-100 m-auto form form-section row">
+            {% csrf_token %}
+            <div class="col-md-12 p-0">
+                {% for field in form %}
+                    {{ field }}
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-warning col-md-2">Write A Review</button>
+        </form>
+
+        <hr/>
+
+        <div class="reivew-section">
+            {% include "phones/components/review.html" %}
+        </div>
+
+    </div>
+
+</section>
